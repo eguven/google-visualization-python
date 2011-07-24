@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # Copyright (C) 2009 Google Inc.
 #
@@ -91,24 +91,24 @@ class DataTableTest(unittest.TestCase):
     # Checking escaping of strings
     problematic_strings = ["control", "new\nline", "",
                            "single'quote", 'double"quote',
-                           r"one\slash", r"two\\slash", u"unicode eng",
-                           u"unicode \u05e2\u05d1\u05e8\u05d9\u05ea"]
+                           r"one\slash", r"two\\slash", "unicode eng",
+                           "unicode \u05e2\u05d1\u05e8\u05d9\u05ea"]
     for s in problematic_strings:
       js_value = DataTable.SingleValueToJS(s, "string")
-      if isinstance(js_value, unicode):
-        js_value = "u%s" % js_value
+      #if isinstance(js_value, str):
+      #  js_value = "u%s" % js_value
       self.assertEquals(s, eval(js_value))
 
       js_value = DataTable.SingleValueToJS(("str", s), "string")[1]
-      if isinstance(js_value, unicode):
-        js_value = "u%s" % js_value
+      #if isinstance(js_value, str):
+      #  js_value = "u%s" % js_value
       self.assertEquals(s, eval(js_value))
 
   def testDifferentCustomProperties(self):
     # Checking escaping of custom properties
-    problematic_cps = [{"control": "test"}, {u"unicode": "value"},
-                       {"key": u"unicode"}, {u"unicode": u"unicode"},
-                       {"regular": "single'quote"}, {"unicode": u"s'quote"}]
+    problematic_cps = [{"control": "test"}, {"unicode": "value"},
+                       {"key": "unicode"}, {"unicode": "unicode"},
+                       {"regular": "single'quote"}, {"unicode": "s'quote"}]
     for cp in problematic_cps:
       js_value = DataTable._EscapeCustomProperties(cp)
       self.assertEquals(cp, eval(js_value))

@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 Installing the library:
-  python ./setup.py install
+  python setup.py install
   (You might need root privileges to do this)
 
 Testing the library:
-  python ./setup.py test
+  python setup.py test

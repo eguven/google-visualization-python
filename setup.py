@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # Copyright (C) 2009 Google Inc.
 #
@@ -45,7 +45,7 @@ class TestCommand(distutils.core.Command):
 distutils.core.setup(
     name="gviz_api.py",
     version="1.7.0",
-    description="Python API for Google Visualization",
+    description="Python3 API for Google Visualization",
     long_description="""
 The Python API for Google Visualization makes it easy to convert python data
 structures into Google Visualization JS code, DataTable JSon construction
